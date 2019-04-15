@@ -50,6 +50,53 @@
             cube.position.z = -300;
             scene.add(cube);
             
+            //text
+            var loader = new THREE.FontLoader();
+            loader.load( 'Space_Grotesk_Regular2.json', function ( font ) {
+                var xMid, text;
+                var color = 0x006699;
+                var matDark = new THREE.LineBasicMaterial( {
+                    color: color,
+                    side: THREE.DoubleSide
+                } );
+                var matLite = new THREE.MeshBasicMaterial( {
+                    color: color,
+                    transparent: true,
+                    opacity: 0.4,
+                    side: THREE.DoubleSide
+                } );
+            }); //end load
+            
+            //API REQUEST - BEGIN
+            var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535";
+            var request = new XMLHttpRequest();
+            request.open('GET', urlString, true);
+
+            request.onload = function() {
+              // Begin accessing JSON data here
+              var data = JSON.parse(this.response);
+              if (request.status >= 200 && request.status < 400) {
+                  console.log(data);
+                    
+                //TEXT STRING
+                var message = data.title + "\n" + data.artistDisplayName;
+
+                var shapes = font.generateShapes( message, 20 );
+                var geometry = new THREE.ShapeBufferGeometry( shapes );
+                geometry.computeBoundingBox();
+                xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+                geometry.translate( xMid, 0, 0 );
+                // make shape ( N.B. edge view not visible )
+                text = new THREE.Mesh( geometry, matLite );
+                text.position.set( 0, 0, -150 ); 
+                scene.add( text );
+
+                }
+            };
+            request.send();
+            //PUT EVERYTHING INSIDE API REQUEST - END
+                
+            
         //frame
             //figure out painting size
             var textureLoader = new THREE.TextureLoader();
