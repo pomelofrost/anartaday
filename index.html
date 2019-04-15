@@ -11,8 +11,6 @@
     <body>
         <script src="js/three.js"></script>
         <script src="js/OrbitControls.js"></script>
-<!--        <script src="js/ObjectLoader.js"></script>-->
-
         <script>
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
@@ -52,6 +50,13 @@
             scene.add(cube);
             
         //frame
+            //figure out painting size
+            var textureLoader = new THREE.TextureLoader();
+            var texture = textureLoader.load( "img/artwork.jpg", function ( texture ) {
+                // tex and texture are the same in this example, but that might not always be the case
+                console.log( texture.image.width, texture.image.height );
+            } );
+            
             // lower frame
             var lowerGeometry = new THREE.CubeGeometry(410,10,100);
             var lowerMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
@@ -59,8 +64,7 @@
             lowerCube.position.y = -150;
             lowerCube.position.z = -300;
             scene.add(lowerCube);
-    
-            //s    
+        
             // upper frame
             var upperGeometry = new THREE.CubeGeometry(410,10,100);
             var upperMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
