@@ -32,7 +32,7 @@
             controls = new THREE.OrbitControls(camera, renderer.domElement);
             
            
-            camera. position.z = 280;
+            camera. position.z = 200;
             
             var geometry = new THREE.BoxGeometry(400,300,1);
             var cubeMaterials = [
@@ -47,7 +47,7 @@
             
             var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
             var cube = new THREE.Mesh (geometry, cubeMaterial);
-            cube.position.z = -300;
+            cube.position.z = -500;
             scene.add(cube);
             
             //text
@@ -113,7 +113,7 @@
             var lowerMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
             var lowerCube = new THREE.Mesh (lowerGeometry, lowerMaterial);
             lowerCube.position.y = -150;
-            lowerCube.position.z = -300;
+            lowerCube.position.z = -500;
             scene.add(lowerCube);
         
             // upper frame
@@ -121,7 +121,7 @@
             var upperMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
             var upperCube = new THREE.Mesh (upperGeometry, upperMaterial);
             upperCube.position.y = 150;
-            upperCube.position.z = -300;
+            upperCube.position.z = -500;
             scene.add(upperCube);
             
             
@@ -130,7 +130,7 @@
             var leftFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
             var leftFrameCube = new THREE.Mesh(leftFrameGeometry, leftFrameMaterial);
             leftFrameCube.position.x = -200;
-            leftFrameCube.position.z = -300;
+            leftFrameCube.position.z = -500;
             scene.add(leftFrameCube);
             
             //Right frame
@@ -138,7 +138,7 @@
             var rightFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
             var rightFrameCube = new THREE.Mesh(rightFrameGeometry, rightFrameMaterial);
             rightFrameCube.position.x =200;
-            rightFrameCube.position.z = -300;
+            rightFrameCube.position.z = -500;
 
             scene.add(rightFrameCube);
             
@@ -179,7 +179,7 @@
             var backWallGeometry = new THREE.CubeGeometry(1000,600,10);
             var backWallCube = new THREE.Mesh(backWallGeometry, wallMaterial);
             backWallCube.position.x = 0;
-            backWallCube.position.z = -400;
+            backWallCube.position.z = -700;
             scene.add(backWallCube);
             
             //front
@@ -204,11 +204,12 @@
             //bench
             var loader = new THREE.GLTFLoader();
 
-            loader.load( 'obj/leather_bench/scene.gltf', function ( gltf ) {
+            loader.load( 'obj/sofa03/scene.gltf', function ( gltf ) {
 
                 scene.add( gltf.scene );
-                gltf.scene.scale.set(20, 20, 20);
-                gltf.scene.position.set(0, -250, -200 );
+                gltf.scene.scale.set(3, 3, 3);
+                gltf.scene.position.set(-20, -250, 100 );
+                gltf.scene.rotation.y = THREE.Math.degToRad(180)
                 gltf.scene.traverse((o) => {
                   if (o.isMesh) o.material.normalScale.y *= -1;
                 });
