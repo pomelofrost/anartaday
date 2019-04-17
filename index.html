@@ -196,7 +196,7 @@
 
                 scene.add( gltf.scene );
                 gltf.scene.scale.set(30, 30, 30);
-                gltf.scene.position.set(200, -250, -200);
+                gltf.scene.position.set(300, -250, -200);
 
             } );
             
@@ -216,7 +216,7 @@
 
             scene.add( spotLight );
             
-            var ambientLight = new THREE.AmbientLight( 0xFFFFFF,0.5);
+            var ambientLight = new THREE.AmbientLight( 0xFFFFFF,0.99);
             scene.add(ambientLight);
 
             
@@ -231,6 +231,8 @@
             // draw scene
             var render = function(){
                 renderer.render( scene, camera);
+                renderer.gammaOutput = true;
+                renderer.gammaFactor = 2.2;
             };
             
             // run game loop (update, render, repeat)
