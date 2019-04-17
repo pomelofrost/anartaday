@@ -16,7 +16,7 @@
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
             
-            var renderer = new THREE.WebGLRenderer();
+            renderer = new THREE.WebGLRenderer( { antialias: true } );
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
             
@@ -52,7 +52,7 @@
             
             //text
             var loader = new THREE.FontLoader();
-            loader.load( 'Space_Grotesk_Regular2.json', function ( font ) {
+            loader.load( 'fonts/Space_Grotesk_Regular.json', function ( font ) {
                 var xMid, text;
                 var color = 0x006699;
                 var matDark = new THREE.LineBasicMaterial( {
@@ -65,7 +65,7 @@
                     opacity: 0.4,
                     side: THREE.DoubleSide
                 } );
-            }); //end load
+            
             
             //API REQUEST - BEGIN
             var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535";
@@ -95,6 +95,8 @@
             };
             request.send();
             //PUT EVERYTHING INSIDE API REQUEST - END
+                
+                }); //end text load
                 
             
         //frame
