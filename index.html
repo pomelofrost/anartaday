@@ -200,7 +200,21 @@
 
             } );
             
-            //light
+            //bench
+            var loader = new THREE.GLTFLoader();
+
+            loader.load( 'obj/leather_bench/scene.gltf', function ( gltf ) {
+
+                scene.add( gltf.scene );
+                gltf.scene.scale.set(20, 20, 20);
+                gltf.scene.position.set(0, -250, -200 );
+                gltf.scene.traverse((o) => {
+                  if (o.isMesh) o.material.normalScale.y *= -1;
+                });
+
+            } );
+            
+        //light
             
             var spotLight = new THREE.SpotLight( 0xffffff );
             spotLight.position.set( 0, -50, -50 );
