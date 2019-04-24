@@ -60,9 +60,10 @@ body{
     line-height: 1.6;  
 }
 
-h1{
+h1{ 
+    font-family: starling, serif;
+    font-weight: 400;
     font-size: 30px;
-    font-weight: 300;
     line-height: 1.11;
     margin-bottom: 10px;
     margin-top: 30px;
@@ -73,7 +74,9 @@ p{
 }
 
 .main-wrapper{
-    margin-bottom: 40px;    
+    margin-bottom: 40px;
+    position: absolute;
+    z-index: 200;
 }
 
 .wrapper{
@@ -115,7 +118,6 @@ p{
 
 .blurb{
     position: relative;
-    z-index: 1;
 }
 
 .p{
@@ -181,6 +183,16 @@ section a#button.go{
     transform-origin: top left;
 }
 
+.hide{
+    display: none;
+}
+
+
+.three{
+    position: absolute;
+    z-index: -200;
+}
+
 /*************** NAV BAR *****************/
 
 nav{
@@ -191,7 +203,7 @@ nav{
 /*    margin-bottom: 30px;*/
     display: block;
     position: sticky;
-    z-index: 2;
+    z-index: 200;
 }
 
 nav ul{
