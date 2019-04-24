@@ -124,7 +124,6 @@
             var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535";
             var request = new XMLHttpRequest();
             request.open('GET', urlString, true);
-
             request.onload = function() {
               // Begin accessing JSON data here
               var data = JSON.parse(this.response);
@@ -133,7 +132,6 @@
                     
                 //TEXT STRING
                 var message = data.title + "\n" + data.artistDisplayName;
-
                 var shapes = font.generateShapes( message, 10 );
                 var geometry = new THREE.ShapeBufferGeometry( shapes );
                 geometry.computeBoundingBox();
@@ -141,10 +139,9 @@
 //                geometry.translate( xMid, 0, 0 );
                 // make shape ( N.B. edge view not visible )
                 text = new THREE.Mesh( geometry, matLite );
-                text.position.set(-440, 0, -350 ); 
-//              text.rotation.y = THREE.Math.degToRad(90);
+                text.position.set(-490, 0, -350 ); 
+                text.rotation.y = THREE.Math.degToRad(90);
                 scene.add( text );
-
                 }
             };
             request.send();
@@ -192,7 +189,6 @@
             var rightFrameCube = new THREE.Mesh(rightFrameGeometry, rightFrameMaterial);
             rightFrameCube.position.x =200;
             rightFrameCube.position.z = -500;
-
             scene.add(rightFrameCube);
             
         //room
@@ -225,7 +221,6 @@
             floorCube.position.x = 0;
             floorCube.position.y = 300;
             floorCube.position.z = -200;
-
             scene.add(floorCube);
             
             //backwall
@@ -245,20 +240,15 @@
         //models
             //plant
             var loader = new THREE.GLTFLoader();
-
             loader.load( 'obj/indoor_plant/scene.gltf', function ( gltf ) {
-
                 scene.add( gltf.scene );
                 gltf.scene.scale.set(30, 30, 30);
                 gltf.scene.position.set(300, -250, -200);
-
             } );
             
             //bench
             var loader = new THREE.GLTFLoader();
-
             loader.load( 'obj/leather_couch_black/scene.gltf', function ( gltf ) {
-
                 scene.add( gltf.scene );
                 gltf.scene.scale.set(50, 50, 50);
                 gltf.scene.position.set(-20, -100, 120 );
@@ -266,7 +256,6 @@
                 gltf.scene.traverse((o) => {
                   if (o.isMesh) o.material.normalScale.y *= -1;
                 });
-
             } );
             
         //light
@@ -275,21 +264,16 @@
             spotLight.position.set( 0, -50, -50 );
 //            spotlight.decay = 1.2;
 //            spotlight.angle = 1.0;
-
             spotLight.castShadow = true;
-
             spotLight.shadow.mapSize.width = 1024;
             spotLight.shadow.mapSize.height = 1024;
-
             spotLight.shadow.camera.near = 500;
             spotLight.shadow.camera.far = 500;
             spotLight.shadow.camera.fov = 30;
-
             scene.add( spotLight );
             
             var ambientLight = new THREE.AmbientLight( 0xFFFFFF,0.99);
             scene.add(ambientLight);
-
             
             
             //game logic
