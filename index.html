@@ -16,15 +16,10 @@
         <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
         <script>
           $(document).ready(function(){
-                $("#button").click(function(){
-                    $("#button").add("go");               
+                $("#go").click(function(){
+                    $(".main-wrapper").addClass("hide");               
                 })
            });
-            
-            
-          $("#hide").click(function(){
-            $("#button").hide();
-          });
         </script>
         <script src="js/three.js"></script>
         <script src="js/OrbitControls.js"></script>
@@ -54,7 +49,7 @@
                      <p>We’d like to create a virtual museum space that allows users to discover different pieces of art in a hyper-focused or personalized way. Tentatively, works of art pulled from the Met API will be displayed in a 3D immersive experience using three.js, and users will be presented to the ability to learn more about the work of art in this “room” or discover and keep track of similar pieces they like.
                     </p>
                     <div>
-                       <a href="#" class= "go">Start Exploring</a>
+                       <a href="#" class="go" id="go">Start Exploring</a>
                     </div> 
                     <footer class="global-footer">
                        <div class="global-footer_wrapper">
