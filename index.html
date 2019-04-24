@@ -108,7 +108,7 @@
             
             //text
             var loader = new THREE.FontLoader();
-            loader.load( 'fonts/Space_Grotesk_Regular.json', function ( font ) {
+            loader.load( 'fonts/Libre_Baskerville_Bold_limit.json', function ( font ) {
                 var xMid, text;
                 var color = 0x111111;
                 var matDark = new THREE.LineBasicMaterial( {
@@ -142,7 +142,7 @@
 //                geometry.translate( xMid, 0, 0 );
                 // make shape ( N.B. edge view not visible )
                 text = new THREE.Mesh( geometry, matLite );
-                text.position.set(-460, -250, -690 ); 
+                text.position.set(-460, -255, -690 ); 
 //                text.rotation.y = THREE.Math.degToRad(90);
                 scene.add( text );
                 }
