@@ -60,9 +60,10 @@ body{
     line-height: 1.6;  
 }
 
-h1{
+h1{ 
+    font-family: starling, serif;
+    font-weight: 400;
     font-size: 30px;
-    font-weight: 300;
     line-height: 1.11;
     margin-bottom: 10px;
     margin-top: 30px;
@@ -181,6 +182,11 @@ section a#button.go{
     animation-direction: reverse;
     transform-origin: top left;
 }
+
+.hide{
+    display: none;
+}
+
 
 .three{
     position: absolute;
