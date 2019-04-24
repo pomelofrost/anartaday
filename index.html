@@ -276,6 +276,24 @@
             spotLight.shadow.camera.fov = 30;
             scene.add( spotLight );
             
+            
+            var spotLight2 = new THREE.SpotLight( 0xf0e0bc );
+            spotLight.position.set( 300, 100, 300 );
+
+            spotLight2.decay = 1.2;
+            spotLight2.angle = 4;
+            spotLight2.intensity = 2;
+            spotLight2.distance = 600;
+
+            spotLight2.castShadow = true;
+            spotLight2.shadow.mapSize.width = 1024;
+            spotLight2.shadow.mapSize.height = 1024;
+            spotLight2.shadow.camera.near = 500;
+            spotLight2.shadow.camera.far = 500;
+            spotLight2.shadow.camera.fov = 30;
+            scene.add( spotLight2 );
+            
+            
             var ambientLight = new THREE.AmbientLight( 0xFFFFFF,0.99);
             scene.add(ambientLight);
             
