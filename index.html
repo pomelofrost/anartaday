@@ -54,10 +54,12 @@
                     </div> 
                     <footer class="global-footer">
                        <div class="global-footer_wrapper">
+<!--
                            <div class="global-footer_copyright">
                                 <p>Created by Allissa Chan, Sharon Lee, and Sherry Wu ©2019 | Carnegie Mellon Design School of Design 
                                 </p>
                            </div>
+-->
                        </div>
                    </footer>
                  </div>  
@@ -65,8 +67,12 @@
                <div class="med-hide lrg-c2"></div>
             </div>
         </div> 
+<<<<<<< HEAD
         
         <script>
+=======
+        <script class="three">
+>>>>>>> e5f5f5ae609f4e389b7093bf50b1312735f246c5
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
             
@@ -263,8 +269,12 @@
             
             var spotLight = new THREE.SpotLight( 0xf0e0bc );
             spotLight.position.set( 0, -50, -50 );
-//            spotlight.decay = 1.2;
-//            spotlight.angle = 1.0;
+
+            spotLight.decay = 1.2;
+            spotLight.angle = 4;
+            spotLight.intensity = 1.5;
+            spotLight.distance = 300;
+
             spotLight.castShadow = true;
             spotLight.shadow.mapSize.width = 1024;
             spotLight.shadow.mapSize.height = 1024;
