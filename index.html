@@ -71,6 +71,7 @@
                <div class="med-hide lrg-c2"></div>
             </div>
         </div> 
+        
         <script class="three">
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
@@ -145,8 +146,8 @@
 //                geometry.translate( xMid, 0, 0 );
                 // make shape ( N.B. edge view not visible )
                 text = new THREE.Mesh( geometry, matLite );
-                text.position.set(-490, 0, -350 ); 
-                text.rotation.y = THREE.Math.degToRad(90);
+                text.position.set(-460, -250, -690 ); 
+//                text.rotation.y = THREE.Math.degToRad(90);
                 scene.add( text );
                 }
             };
