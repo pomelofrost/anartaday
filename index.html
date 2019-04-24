@@ -85,7 +85,7 @@
             controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableZoom = false;
            
-            camera.position.z = 100;
+            camera. position.z = 100;
             
             var geometry = new THREE.BoxGeometry(400,300,1);
             var cubeMaterials = [
@@ -121,8 +121,7 @@
             
             
             //API REQUEST - BEGIN
-            var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/14472";
-//                 var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535";
+            var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/436535";
             var request = new XMLHttpRequest();
             request.open('GET', urlString, true);
 
@@ -142,8 +141,8 @@
 //                geometry.translate( xMid, 0, 0 );
                 // make shape ( N.B. edge view not visible )
                 text = new THREE.Mesh( geometry, matLite );
-                text.position.set(-495, 0, -150 ); 
-                text.rotation.y = THREE.Math.degToRad(90);
+                text.position.set(-440, 0, -350 ); 
+//              text.rotation.y = THREE.Math.degToRad(90);
                 scene.add( text );
 
                 }
