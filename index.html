@@ -85,7 +85,7 @@
             controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableZoom = false;
            
-            camera. position.z = 100;
+            camera. position.z = 80;
             
             var geometry = new THREE.BoxGeometry(400,300,1);
             var cubeMaterials = [
@@ -257,11 +257,11 @@
             //bench
             var loader = new THREE.GLTFLoader();
 
-            loader.load( 'obj/sofa03/scene.gltf', function ( gltf ) {
+            loader.load( 'obj/leather_couch_black/scene.gltf', function ( gltf ) {
 
                 scene.add( gltf.scene );
-                gltf.scene.scale.set(3, 3, 3);
-                gltf.scene.position.set(-20, -250, 100 );
+                gltf.scene.scale.set(50, 50, 50);
+                gltf.scene.position.set(-20, -100, 120 );
                 gltf.scene.rotation.y = THREE.Math.degToRad(180)
                 gltf.scene.traverse((o) => {
                   if (o.isMesh) o.material.normalScale.y *= -1;
@@ -271,8 +271,10 @@
             
         //light
             
-            var spotLight = new THREE.SpotLight( 0xffffff );
+            var spotLight = new THREE.SpotLight( 0xf0e0bc );
             spotLight.position.set( 0, -50, -50 );
+//            spotlight.decay = 1.2;
+//            spotlight.angle = 1.0;
 
             spotLight.castShadow = true;
 
