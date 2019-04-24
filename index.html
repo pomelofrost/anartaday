@@ -273,8 +273,10 @@
             
             var spotLight = new THREE.SpotLight( 0xf0e0bc );
             spotLight.position.set( 0, -50, -50 );
-//            spotlight.decay = 1.2;
-//            spotlight.angle = 1.0;
+            spotLight.decay = 1.2;
+            spotLight.angle = 4;
+            spotLight.intensity = 1.5;
+            spotLight.distance = 300;
 
             spotLight.castShadow = true;
 
