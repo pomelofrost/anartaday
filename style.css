@@ -162,6 +162,12 @@ section about{
     
 }
 
+#today{
+    font-family: orpheuspro, serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.11;
+}
 
 
 /************ BUTTON **************/
