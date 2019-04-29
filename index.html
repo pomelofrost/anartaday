@@ -30,12 +30,13 @@
         <script src="js/three.js"></script>
         <script src="js/OrbitControls.js"></script>
         <script src="js/GLTFLoader.js"></script>
-        <div class="header">
-            <h1> An Art Per Day</h1>
-            <img src="img/logo.png">
-        </div>
         <div class="clear"></div>
         <div class="main-wrapper wrapper">
+            <div class="header">
+                <h1>An Art Per Day</h1>
+                <img src="img/logo.png">
+            </div>
+            <div class="clear"></div>
             <div class="row">
                <div class="med-hide lrg-c2"></div>
                <div class="content content-centered">
@@ -77,6 +78,7 @@
         </div>
         <input id="today" type="date">
         <script>document.querySelector("#today").valueAsDate = new Date();</script>
+        <div class="clear"></div>
         <script class="three">
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
