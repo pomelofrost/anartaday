@@ -75,6 +75,7 @@ img{
     width: 10%;
     position: fixed;
     z-index: 200;
+    margin-top: 20px;
     margin-bottom: 20px; 
 }
 
