@@ -215,6 +215,8 @@ div a{
 }
 
 div a:hover{
+    border-width: 3px;
+    border-color: #ffffff;
     background-color: #e4002b;
 }
 
