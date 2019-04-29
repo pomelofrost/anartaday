@@ -80,7 +80,7 @@ img{
     flex-wrap: wrap;
     float: right;
     height: auto;
-    width: 10%;
+    width: 6%;
     margin-top: 20px;
     margin-bottom: 40px; 
 }
@@ -98,7 +98,7 @@ p{
 .wrapper{
     margin: 0 auto;
     width: 100%;
-    max-width: 1240px;
+    max-width: 100vw;
     overflow: hidden;
 }
 
@@ -117,8 +117,8 @@ p{
 
 .content-centered{
 /*    display: grid;*/
-    grid-column: span 8;
-    grid-template-columns: repeat(8, 1fr);
+    grid-column: span 7;
+    grid-template-columns: repeat(7, 1fr);
     
 }
 
@@ -162,6 +162,20 @@ section about{
     
 }
 
+#today{
+    font-family: orpheuspro, serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.11;
+    color: #e4002b;
+    border-width: 0px;
+/*    flex-wrap: wrap;*/
+    float: right;
+    position: absolute;
+    bottom: 10px;
+    background-color: none;
+    
+}
 
 
 /************ BUTTON **************/
