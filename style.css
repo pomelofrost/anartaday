@@ -83,6 +83,8 @@ img{
     width: 6%;
     margin-top: 20px;
     margin-bottom: 40px; 
+    position: sticky;
+    z-index: -150;
 }
 
 p{
@@ -172,6 +174,8 @@ section about{
     float: right;
     bottom: 10px;
     background: transparent;
+    position: inherit;
+    z-index: -150;
     
 }
 
