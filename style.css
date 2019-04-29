@@ -172,6 +172,7 @@ section about{
     flex-wrap: wrap;
     float: right;
     bottom: 10px;
+    position: absolute;
 }
 
 
