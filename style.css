@@ -173,6 +173,7 @@ section about{
     float: right;
     position: absolute;
     bottom: 10px;
+    background-color: none;
     
 }
 
