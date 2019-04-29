@@ -57,7 +57,8 @@ html{
 
 body{
     font-size: 16px;
-    line-height: 1.6;  
+    line-height: 1.6;
+    color: #ffffff;
 }
 
 h1{ 
@@ -67,14 +68,13 @@ h1{
     line-height: 1.11;
     margin-bottom: 10px;
     margin-top: 30px;
+    color: #ffffff;
 }
 
 img{
     float: right;
     height: auto;
     width: 10%;
-    position: fixed;
-    z-index: 200;
     margin-top: 20px;
     margin-bottom: 20px; 
 }
