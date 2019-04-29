@@ -72,7 +72,7 @@ h1{
 img{
     float: right;
     height: auto;
-    width: 10%;
+    width: 0.1vw;
     position: fixed;
     z-index: 200;
 }
