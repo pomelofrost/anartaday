@@ -169,7 +169,7 @@ section about{
     line-height: 1.11;
     color: #e4002b;
     border-width: 0px;
-    flex-wrap: wrap;
+/*    flex-wrap: wrap;*/
     float: right;
     position: absolute;
     bottom: 10px;
