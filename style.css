@@ -210,8 +210,7 @@ div a{
     margin-bottom: 20px;
     transition: .2s linear all;
     text-decoration: none;
-    border-width: 3px;
-    border-color: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 div a:hover{
