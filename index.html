@@ -70,7 +70,11 @@
                 <rect class="cls-1" width="1318" height="894"/>
             </svg>
         </section>
-        
+        <div class="vertcal-text">
+            <h1>Title</h1>
+        </div>
+        <input id="today" type="date">
+        <script>document.querySelector("#today").valueAsDate = new Date();</script>
         <script class="three">
             var scene = new THREE.Scene();
             var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
