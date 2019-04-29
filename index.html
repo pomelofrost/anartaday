@@ -20,6 +20,12 @@
                     $(".main-wrapper").addClass("hide");               
                 })
            });
+        
+          $(document).ready(function(){
+                $("#go").click(function(){
+                    $(".rect").addClass("hide");               
+                })
+           });
         </script>
         <script src="js/three.js"></script>
         <script src="js/OrbitControls.js"></script>
@@ -68,6 +74,14 @@
                <div class="med-hide lrg-c2"></div>
             </div>
         </div> 
+        <section class="rect">
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1318 894">         <defs>
+                    <style>.cls-1{fill:#fff;}</style>
+                </defs>
+                <title>rect</title>
+                <rect class="cls-1" width="1318" height="894"/>
+            </svg>
+        </section>
         
         <script class="three">
             var scene = new THREE.Scene();
