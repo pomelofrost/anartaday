@@ -78,8 +78,13 @@
             <a class="artLink">permalink to collection</a>
         </div>
 -->
-        <input id="today" type="date">
-        <script>document.querySelector("#today").valueAsDate = new Date();</script>
+        <p id="today"></p>
+        <script>
+            var d = new Date();
+            var month = d.getMonth()+ 1;
+            var date = d.getDate();
+            document.getElementById("today").innerHTML = month + "/" + date;
+        </script>
         <div class="clear"></div>
         <script class="three">
             var scene = new THREE.Scene();
