@@ -174,7 +174,7 @@ section about{
 /************ BUTTON **************/
 
 
-div a .go{
+div a #go{
     background-color: #a2a2a2;
     display: inline-block;
     padding: 1% 3% 1% 3%;
