@@ -47,22 +47,24 @@
                     <div>
                        <a href="#" class="go" id="go">Start Exploring</a>
                     </div> 
+<!--
                     <footer class="global-footer">
                        <div class="global-footer_wrapper">
-                           <p id="today"></p>
-                           <script>
-                               var d = new Date();
-                               var month = d.getMonth()+ 1;
-                               var date = d.getDate();
-                               document.getElementById("today").innerHTML = month + "/" + date;
-                           </script>
                        </div>
                    </footer>
+-->
                  </div>  
                </div>
                <div class="med-hide lrg-c2"></div>
             </div>
-        </div> 
+        </div>
+        <p id="today"></p>
+        <script>
+            var d = new Date();
+            var month = d.getMonth()+ 1;
+            var date = d.getDate();
+            document.getElementById("today").innerHTML = month + "/" + date;
+        </script> 
         <section class="rect">
             <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1318 894">         <defs>
                     <style>.cls-1{fill:#000000;}</style>
