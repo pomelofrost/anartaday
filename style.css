@@ -72,7 +72,9 @@ h1{
 img{
     float: right;
     height: auto;
-    width: 30%;
+    width: 10%;
+    position: fixed;
+    z-index: 200;
 }
 
 p{
