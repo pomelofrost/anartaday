@@ -186,8 +186,12 @@ section about{
     float: right;
     bottom: 10px;
     background: transparent;
+/*
     position: inherit;
     z-index: -150;
+*/
+    padding-right: 3%;
+    margin-top: 10%;
     
 }
 
