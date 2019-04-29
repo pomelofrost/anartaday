@@ -171,8 +171,9 @@ section about{
     border-width: 0px;
     flex-wrap: wrap;
     float: right;
-    bottom: 10px;
     position: absolute;
+    bottom: 10px;
+    
 }
 
 
