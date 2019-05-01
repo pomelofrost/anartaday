@@ -103,13 +103,14 @@
             });
             
             controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableZoom = false;
+            controls.enableZoom = true;
+            controls.minZoom = 500;
+            controls.maxZoom = 100;
            
             camera. position.z = 80;
             
             //art
-            var normalSizePaintings = ["img/436535.jpg","img/459189.jpg","img/451405.jpg","img/438417.jpg"]
-            console.log(normalSizePaintings.length)
+            var normalSizePaintings = ["img/436535.jpg","img/459189.jpg","img/451405.jpg","img/438417.jpg","img/40055.jpg","img/435882.jpg","img/11050.jpg","img/437299.jpg"]
             var randomPainting = normalSizePaintings[Math.floor(Math.random()*normalSizePaintings.length)]
             var geometry = new THREE.BoxGeometry(400,300,1);
             var cubeMaterials = [
@@ -123,6 +124,7 @@
             ];
             
             var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+            cubeMaterial.depthWrite = true;
             var cube = new THREE.Mesh (geometry, cubeMaterial);
             cube.position.z = -500;
             scene.add(cube);
