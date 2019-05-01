@@ -105,15 +105,18 @@
             camera. position.z = 80;
             
             //art
+            var normalSizePaintings = ["img/436535.jpg","img/459189.jpg","img/451405.jpg","img/438417.jpg"]
+            console.log(normalSizePaintings.length)
+            var randomPainting = normalSizePaintings[Math.floor(Math.random()*normalSizePaintings.length)]
             var geometry = new THREE.BoxGeometry(400,300,1);
             var cubeMaterials = [
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
-                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("img/artwork.jpg"), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
             ];
             
             var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
@@ -201,15 +204,9 @@
                 
 //                }); //end text load
                 
+//array of paintaings
             
-        //frame
-            //figure out painting size
-            var textureLoader = new THREE.TextureLoader();
-            var texture = textureLoader.load( "img/artwork.jpg", function ( texture ) {
-                // tex and texture are the same in this example, but that might not always be the case
-                console.log( texture.image.width, texture.image.height );
-            } );
-            
+        //frame            
             // lower frame
             var lowerGeometry = new THREE.CubeGeometry(410,10,100);
             var lowerMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
