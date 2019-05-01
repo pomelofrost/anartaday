@@ -212,10 +212,12 @@ div a{
     transition: .2s linear all;
     text-decoration: none;
     border: 2px solid #ffffff;
+    font-size: 18px;
+    text-transform: capitalize;
 }
 
 div a:hover{
-    border-width: 3px;
+    border-width: 2px;
     border-color: #ffffff;
     background-color: #e4002b;
 }
