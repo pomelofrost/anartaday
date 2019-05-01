@@ -106,7 +106,8 @@
             
             //art
             var normalSizePaintings = ["img/436535.jpg","img/459189.jpg","img/451405.jpg","img/438417.jpg"]
-            var randomPainting = normalSizePaintings[Math.floor(Math.random()*10)]
+            console.log(normalSizePaintings.length)
+            var randomPainting = normalSizePaintings[Math.floor(Math.random()*normalSizePaintings.length)]
             var geometry = new THREE.BoxGeometry(400,300,1);
             var cubeMaterials = [
                 new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
