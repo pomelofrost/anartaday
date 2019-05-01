@@ -201,11 +201,12 @@
                 
 //                }); //end text load
                 
-            
+//array of paintaings
+            var normalSizePaintings = ["img/436535.jpg","img/459189.jpg","img/451405.jpg","img/438417.jpg"]
         //frame
             //figure out painting size
             var textureLoader = new THREE.TextureLoader();
-            var texture = textureLoader.load( "img/artwork.jpg", function ( texture ) {
+            var texture = textureLoader.load( normalSizePaintings[Math.floor(Math.random() * 4], function ( texture ) {
                 // tex and texture are the same in this example, but that might not always be the case
                 console.log( texture.image.width, texture.image.height );
             } );
