@@ -17,7 +17,8 @@
         <script>
           $(document).ready(function(){
                 $("#go").click(function(){
-                    $(".main-wrapper").addClass("hide");               
+                    $(".main-wrapper").addClass("hide");  
+                    $("#artID").removeClass("hide");
                 })
            });
         
@@ -65,6 +66,15 @@
                 document.getElementById("today").innerHTML = month + "/" + date;
             </script>
         </div> 
+        
+        <div id="artID" class="hide">
+<!--
+             LOAD IN DYNAMICALLY - CLASSES FOR REF/ STYLING
+            <h1 class="artTitle">title of piece</h1>
+            <h2 class="artistName">artist name</h2>
+            <a class="artLink">permalink to collection</a>
+-->
+        </div>
         <section class="rect">
             <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1318 894">         <defs>
                     <style>.cls-1{fill:#000000;}</style>
@@ -73,14 +83,7 @@
                 <rect class="cls-1" width="1318" height="894"/>
             </svg>
         </section>
-<!--
-        <div id="artID" class="vertical-text">
-             LOAD IN DYNAMICALLY - CLASSES FOR REF/ STYLING
-            <h1 class="artTitle">title of piece</h1>
-            <h2 class="artistName">artist name</h2>
-            <a class="artLink">permalink to collection</a>
-        </div>
--->
+
         <div class="clear"></div>
         <script class="three">
             var scene = new THREE.Scene();

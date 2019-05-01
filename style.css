@@ -196,6 +196,21 @@ section about{
     
 }
 
+div#artID {
+    position: absolute;
+    bottom: 0px;
+    padding: 2%;
+/*    margin-bottom: 10px;*/
+    width: 50%;
+}
+
+#artID h2 {
+    margin-bottom: 20px;
+}
+
+#artID .artLink {
+    margin-bottom: 0;
+}
 
 /************ BUTTON **************/
 
@@ -203,7 +218,7 @@ section about{
 div a{
     background-color: transparent;
     display: inline-block;
-    padding: 1% 3% 1% 3%;
+    padding: .6rem 1.5rem; /*changed from percentages to stay consistent*/
     box-sizing: border-box;
 /*    border-radius: 25px;*/
     text-align: center;
