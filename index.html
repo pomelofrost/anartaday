@@ -101,6 +101,8 @@
             
             controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableZoom = true;
+            controls.minDistance = 10;
+            controls.maxDistance = 50;
            
             camera. position.z = 80;
             
