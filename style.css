@@ -196,6 +196,10 @@ section about{
     
 }
 
+div#header2 h1, div#header2 img{
+    position: absolute !important;
+}
+
 div#artID {
     position: absolute;
     bottom: 0px;
@@ -208,13 +212,31 @@ div#artID {
     
 }
 
-#artID h2 {
-    margin-bottom: 20px;
+#artID .artistName {
+    margin-bottom: 0px;
+    font-weight: 600;
 }
 
 #artID .artLink {
     margin-bottom: 0;
 }
+
+#artID .artInfo {
+    font-size: 75%;
+}
+
+#artID .darkText, #artID .darkLinkText {
+    color: #555;
+}
+
+#artID .darkLinkText {
+    border: 2px solid #e4002b;
+}
+
+#artID .darkLinkText:hover {
+    color: #fff;
+}
+
 
 /************ BUTTON **************/
 

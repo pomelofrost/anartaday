@@ -17,7 +17,9 @@
         <script>
           $(document).ready(function(){
                 $("#go").click(function(){
-                    $(".main-wrapper").addClass("hide");  
+                    $("#startContent").addClass("hide");  
+                    $("#today").addClass("hide"); 
+                    $("#header2").removeClass("hide");
                     $("#artID").removeClass("hide");
                 })
            });
@@ -40,7 +42,7 @@
             <div class="clear"></div>
             <div class="row">
                <div class="med-hide lrg-c2"></div>
-               <div class="content content-centered">
+               <div id="startContent" class="content content-centered">
                  <h1 class="page-title">An Art Per Day</h1>
                  <div class="container sub-content">
                      <p>The Metropolitan Museum contains 5,000 years of the most fascinating artworks worldwide. While it is important to visit the museum and witness the artworks in real life, the experience could be overwhelming. An Art Per Day is a virtual space for people to view the artworks a new way. Visitors are able to focus on one artwork each day, pulled from the Met Collection API, and view it in any distance. 
@@ -108,6 +110,11 @@
             controls.maxZoom = 300;
            
             camera. position.z = 80;
+            
+            //room switching vars
+            var roomNum = 2;
+            var roomType = Math.floor(Math.random() * 2) + 1;
+            console.log(roomType);
             
            //set up array of object IDs - 2d paintings/ drawings from met highlights
             var objIDs = [436535,459189,451405,438417,40055,435882,11050,437299];
@@ -178,12 +185,23 @@
                   var h2 = document.createElement('h2');
                   h2.textContent = data.artistDisplayName;
                   h2.setAttribute('class', 'artistName');
+                  
+                  var p = document.createElement('p');
+                  p.textContent = data.objectDate + "; " + data.medium;
+                  p.setAttribute('class', 'artInfo');
 
                   var a = document.createElement('a');
                   a.href = data.objectURL;
                   a.target = "_blank";
                   a.innerHTML = "more information";
                   a.setAttribute('class', 'artLink');
+                  
+                  if (roomType == 1){
+                      h1.setAttribute('class', 'artTitle darkText');
+                      h2.setAttribute('class', 'artistName darkText');
+                      p.setAttribute('class', 'artInfo darkText');
+                      a.setAttribute('class', 'artLink darkLinkText');
+                  }
 
             //      const p = document.createElement('p')
             //      data.description = data.description.substring(0, 300)
@@ -192,6 +210,7 @@
 //                  artIDcard.appendChild(img);
                   artIDcard.appendChild(h1);
                   artIDcard.appendChild(h2);
+                  artIDcard.appendChild(p);
                   artIDcard.appendChild(a);
                   
 //                //TEXT STRING
@@ -214,9 +233,6 @@
 //                }); //end text load
                 
 //array of paintaings
-        var roomNum = 2;
-        var roomType = Math.floor(Math.random() * 2) + 1;
-            console.log(roomType);
             
         //frame            
             // lower frame
