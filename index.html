@@ -43,7 +43,7 @@
                <div class="content content-centered">
                  <h1 class="page-title">An Art Per Day</h1>
                  <div class="container sub-content">
-                     <p>The Metropolitan Museum contains 5,000 years of the most fascinating artworks worldwide. While it is important to visit the museum and witness the artworks in real life, the experience could be overwhelming. Therefore, An Art Per Day is a virtual space for people to view the artworks a new way. Pulling from the Met API, which is updated weekly and available on Github, visitors are able to focus on one artwork each day and view it in any distance. 
+                     <p>The Metropolitan Museum contains 5,000 years of the most fascinating artworks worldwide. While it is important to visit the museum and witness the artworks in real life, the experience could be overwhelming. An Art Per Day is a virtual space for people to view the artworks a new way. Visitors are able to focus on one artwork each day, pulled from the Met Collection API, and view it in any distance. 
                     </p>
                     <div>
                        <a href="#" class="go" id="go">Start Exploring</a>
@@ -214,11 +214,14 @@
 //                }); //end text load
                 
 //array of paintaings
+        var roomNum = 2;
+        var roomType = Math.floor(Math.random() * 2) + 1;
+            console.log(roomType);
             
         //frame            
             // lower frame
             var lowerGeometry = new THREE.CubeGeometry(410,10,100);
-            var lowerMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
+            var lowerMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor' + roomType + '.png'), side: THREE.DoubleSide});
             var lowerCube = new THREE.Mesh (lowerGeometry, lowerMaterial);
             lowerCube.position.y = -150;
             lowerCube.position.z = -500;
@@ -226,7 +229,7 @@
         
             // upper frame
             var upperGeometry = new THREE.CubeGeometry(410,10,100);
-            var upperMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
+            var upperMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor' + roomType + '.png'), side: THREE.DoubleSide});
             var upperCube = new THREE.Mesh (upperGeometry, upperMaterial);
             upperCube.position.y = 150;
             upperCube.position.z = -500;
@@ -235,7 +238,7 @@
             
             //Left frame
             var leftFrameGeometry = new THREE.CubeGeometry(10,300,100);
-            var leftFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
+            var leftFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor' + roomType + '.png'), side: THREE.DoubleSide});
             var leftFrameCube = new THREE.Mesh(leftFrameGeometry, leftFrameMaterial);
             leftFrameCube.position.x = -200;
             leftFrameCube.position.z = -500;
@@ -243,7 +246,7 @@
             
             //Right frame
             var rightFrameGeometry = new THREE.CubeGeometry(10,300,100);
-            var rightFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor.png'), side: THREE.DoubleSide});
+            var rightFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor' + roomType + '.png'), side: THREE.DoubleSide});
             var rightFrameCube = new THREE.Mesh(rightFrameGeometry, rightFrameMaterial);
             rightFrameCube.position.x =200;
             rightFrameCube.position.z = -500;
@@ -252,7 +255,9 @@
         //room
             //right wall
             var rightWallGeometry = new THREE.CubeGeometry(10,600,1000);
-            var wallMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/wall.png'), side:THREE.DoubleSide});
+            var wallMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/wall' + roomType + '.png'), side:THREE.DoubleSide});
+            var ceilingMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/wall1.png'), side:THREE.DoubleSide});
+            var floorMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/floor' + roomType + '.png'), side:THREE.DoubleSide});
             var rightWallCube = new THREE.Mesh(rightWallGeometry, wallMaterial);
             rightWallCube.position.x =500;
             rightWallCube.position.z = -200;
@@ -265,17 +270,18 @@
             leftWallCube.position.z = -200;
             scene.add(leftWallCube);
             
-            //ceiling
+            
+            //floor
             var ceilingGeometry = new THREE.CubeGeometry(1000,10,1000);
-            var ceilingCube = new THREE.Mesh(ceilingGeometry, wallMaterial);
+            var ceilingCube = new THREE.Mesh(ceilingGeometry, floorMaterial);
             ceilingCube.position.x = 0;
             ceilingCube.position.y = -300;
             ceilingCube.position.z = -200;
             scene.add(ceilingCube);
             
-            //floor
+            //ceiling
             var floorGeometry = new THREE.CubeGeometry(1000,10,1000);
-            var floorCube = new THREE.Mesh(floorGeometry, wallMaterial);
+            var floorCube = new THREE.Mesh(floorGeometry, ceilingMaterial);
             floorCube.position.x = 0;
             floorCube.position.y = 300;
             floorCube.position.z = -200;
