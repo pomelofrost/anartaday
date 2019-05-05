@@ -225,11 +225,12 @@ div#artID {
     font-size: 75%;
 }
 
-#artID .darkText, #artID .darkLinkText {
+#artID .darkText {
     color: #555;
 }
 
 #artID .darkLinkText {
+    color: #e4002b;
     border: 2px solid #e4002b;
 }
 
