@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ART?</title>
+        <style>
+            body{margin: 0;}
+            canvas {width: 100%; height: 100%;}
+        
+        </style>
+    </head>
+    <body>
+        <meta charset="utf-8">
+        <meta name="keywords" content="The Met, museum, art">
+        <link rel= "stylesheet" type="text/css" href='style.css'>
+        <link rel="stylesheet" href="https://use.typekit.net/fzn4xnk.css">
+        <script type="text/javascript" src="js/jquery-3.4.0.min.js"></script>
+        <script>
+          $(document).ready(function(){
+                $("#go").click(function(){
+                    $(".main-wrapper").addClass("hide");  
+                    $("#artID").removeClass("hide");
+                })
+           });
+        
+          $(document).ready(function(){
+                $("#go").click(function(){
+                    $(".rect").addClass("hide");               
+                })
+           });
+        </script>
+        <script src="js/three.js"></script>
+        <script src="js/OrbitControls.js"></script>
+        <script src="js/GLTFLoader.js"></script>
+        <div class="clear"></div>
+        <div class="main-wrapper wrapper">
+            <div class="header">
+                <h1 id="top-left">An Art Per Day</h1>
+                <img src="img/logo.png">
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+               <div class="med-hide lrg-c2"></div>
+               <div class="content content-centered">
+                 <h1 class="page-title">An Art Per Day</h1>
+                 <div class="container sub-content">
+                     <p>The Metropolitan Museum contains 5,000 years of the most fascinating artworks worldwide. While it is important to visit the museum and witness the artworks in real life, the experience could be overwhelming. Therefore, An Art Per Day is a virtual space for people to view the artworks a new way. Pulling from the Met API, which is updated weekly and available on Github, visitors are able to focus on one artwork each day and view it in any distance. 
+                    </p>
+                    <div>
+                       <a href="#" class="go" id="go">Start Exploring</a>
+                    </div> 
+<!--
+                    <footer class="global-footer">
+                       <div class="global-footer_wrapper">
+                       </div>
+                   </footer>
+-->
+                 </div>  
+               </div>
+               <div class="med-hide lrg-c2"></div>
+            </div>
+            <p id="today"></p>
+            <script>
+                var d = new Date();
+                var month = d.getMonth()+ 1;
+                var date = d.getDate();
+                document.getElementById("today").innerHTML = month + "/" + date;
+            </script>
+        </div> 
+        
+        <div id="artID" class="hide">
+<!--
+             LOAD IN DYNAMICALLY - CLASSES FOR REF/ STYLING
+            <h1 class="artTitle">title of piece</h1>
+            <h2 class="artistName">artist name</h2>
+            <a class="artLink">permalink to collection</a>
+-->
+        </div>
+        <section class="rect">
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1318 894">         <defs>
+                    <style>.cls-1{fill:#000000;}</style>
+                </defs>
+                <title>rect</title>
+                <rect class="cls-1" width="1318" height="894"/>
+            </svg>
+        </section>
+
+        <div class="clear"></div>
+        <script class="three">
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(75, window.innerWidth /window.innerHeight, 0.1, 1000);
+            
+            renderer = new THREE.WebGLRenderer( { antialias: true } );
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+            
+            //resize window
+            window.addEventListener('resize', function(){
+                var width = window.innerWidth;
+                var height = window. innerHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width/height;
+                camera.updateProjectionMatrix();
+            });
+            
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableZoom = true;
+            controls.minZoom = 200;
+            controls.maxZoom = 300;
+           
+            camera. position.z = 80;
+            
+           //set up array of object IDs - 2d paintings/ drawings from met highlights
+            var objIDs = [436535,459189,451405,438417,40055,435882,11050,437299];
+            var paintingID = objIDs[Math.floor(Math.random() * objIDs.length)];
+//            var objIDs = [459192,459210,459191,337491,436173,333915,459194,337490,336489,337487,17066,334710,335240,337075,337493,459137,337496,459183,459193,337632,459195,459209,337489,334650,459190,459213,334245,459138,459189,459234,336046,337498,459211,459235,13215,337844,459184,337172,337499,15541,459236,334769,459185,459186,459238,337105,339751,336327,337500,337088,337894,459232,333813,337494,459187,459237,395485,335663,483434,459188,483438,39915,48948,39901,39918,40081,49156,45428,36029,40055,59669,454015,453183,453336,446297,452037,454011,451405,456949,454611,451023,459253,459207,25111,459208,459254,466070,453024,327830,12602,436819,61429,37801,459045,436575,436658,436002,436964,11040,459046,17447,436851,435984,459052,11396,10531,436573,635401,438605,438417,14472,438817,459123,436105,438818,437487,13211,435802,11207,436966,436095,12600,435876,11080,436121,436947,438816,436037,10586,11619,471904,453683,437394,458967,437986,437971,11263,437654,438814,435868,10827,437097,459038,436838,10174,459055,10159,11050,436322,436545,436101,12702,11383,437926,437532,435896,438754,437455,458961,437835,11737,10819,437749,437826,10464,458971,436528,436435,435839,436892,437853,10793,436504,435851,10499,437447,459106,436532,435600,470600,11417,16687,11234,11707,11797,459093,437869,437854,459092,437326,458956,12667,435817,10843,458977,458978,459136,435962,458994,435621,436579,459037,11734,435853,10482,10946,11130,437891,11311,438820,459090,505722,435888,11122,459088,436106,631985,10481,437675,459087,10522,437879,435882,436616,436622,437397,435908,11329,459007,436253,438821,437344,437549,459131,11055,439933,437056,459028,437175,440723,436244,436918,459086,437609,10527,437283,436535,11133,10786,437769,436603,435809,11605,459084,14931,435728,437329,12828,435844,459083,459016,459082,459080,459072,435702,10497,10154,459027,435641,437658,10830,11227,13052,436896,437881,13315,16584,435826,437153,437299,437372,436282,15588,435739,437790,437261,267891,268621,264711,282046,267019,282043,267087,291739,267124,283626,282040,271963,282039,282051,282022,266982,265726,261941,282190,283099,282756,266983,266644,283222,267426,271890,266480,271885,266332,262612,266284,266121,266133,282602,282163,282234,283121,265904,336162,334002,337063,337058,337062,337057,337700,337725,336222,337699,336259,337702,354631,336228,336256,335668,365017,37145,247009,42716,247008,250939,250945,12388,11120,11375,16577,17053,10732,11900,12613,16863];
+            
+            //art
+            var normalSizePaintings = ["img/436535.jpg","img/459189.jpg","img/451405.jpg","img/438417.jpg","img/40055.jpg","img/435882.jpg","img/11050.jpg","img/437299.jpg"]
+            var randomPainting = "img/" + paintingID + ".jpg"
+            console.log(randomPainting);
+            var geometry = new THREE.BoxGeometry(400,300,1);
+            var cubeMaterials = [
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+                new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load(randomPainting), side: THREE.DoubleSide}),
+            ];
+            
+            var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
+            cubeMaterial.depthWrite = true;
+            var cube = new THREE.Mesh (geometry, cubeMaterial);
+            cube.position.z = -500;
+            scene.add(cube);
+            
+//            //text
+//            var loader = new THREE.FontLoader();
+//            loader.load( 'fonts/Space_Grotesk_Regular.json', function ( font ) {
+//                var xMid, text;
+//                var color = 0x111111;
+//                var matDark = new THREE.LineBasicMaterial( {
+//                    color: color,
+//                    side: THREE.DoubleSide
+//                } );
+//                var matLite = new THREE.MeshBasicMaterial( {
+//                    color: color,
+//                    transparent: true,
+//                    opacity: 1,
+//                    side: THREE.DoubleSide
+//                } );
+            
+ 
+            
+            //API REQUEST - BEGIN
+            //generate url based on random object
+            var urlString = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"+ paintingID;
+            var request = new XMLHttpRequest();
+            request.open('GET', urlString, true);
+            request.onload = function() {
+              // Begin accessing JSON data here
+              var data = JSON.parse(this.response);
+              if (request.status >= 200 && request.status < 400) {
+                  console.log(data);
+                  
+                  var artIDcard = document.getElementById('artID');
+//
+//                  const img = document.createElement('img');
+//                  img.setAttribute('id', 'art')
+//                  img.setAttribute("src", data.primaryImage);
+//                  img.setAttribute("width", 300);
+
+                  var h1 = document.createElement('h1');
+                  h1.textContent = data.title;
+                  h1.setAttribute('class', 'artTitle');
+
+                  var h2 = document.createElement('h2');
+                  h2.textContent = data.artistDisplayName;
+                  h2.setAttribute('class', 'artistName');
+
+                  var a = document.createElement('a');
+                  a.href = data.objectURL;
+                  a.target = "_blank";
+                  a.innerHTML = "more information";
+                  a.setAttribute('class', 'artLink');
+
+            //      const p = document.createElement('p')
+            //      data.description = data.description.substring(0, 300)
+            //      p.textContent = `${data.description}...`
+
+//                  artIDcard.appendChild(img);
+                  artIDcard.appendChild(h1);
+                  artIDcard.appendChild(h2);
+                  artIDcard.appendChild(a);
+                  
+//                //TEXT STRING
+//                var message = data.title + "\n" + data.artistDisplayName;
+//                var shapes = font.generateShapes( message, 10 );
+//                var geometry = new THREE.ShapeBufferGeometry( shapes );
+//                geometry.computeBoundingBox();
+//                xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+////                geometry.translate( xMid, 0, 0 );
+//                // make shape ( N.B. edge view not visible )
+//                text = new THREE.Mesh( geometry, matLite );
+//                text.position.set(-460, -255, -690 ); 
+////                text.rotation.y = THREE.Math.degToRad(90);
+//                scene.add( text );
+                }
+            };
+            request.send();
+            //PUT EVERYTHING INSIDE API REQUEST - END
+                
+//                }); //end text load
+                
+//array of paintaings
+            
+        //frame            
+            // lower frame
+            var lowerGeometry = new THREE.CubeGeometry(410,10,100);
+            var lowerMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor2.jpg'), side: THREE.DoubleSide});
+            var lowerCube = new THREE.Mesh (lowerGeometry, lowerMaterial);
+            lowerCube.position.y = -150;
+            lowerCube.position.z = -500;
+            scene.add(lowerCube);
+        
+            // upper frame
+            var upperGeometry = new THREE.CubeGeometry(410,10,100);
+            var upperMaterial = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('img/floor2.jpg'), side: THREE.DoubleSide});
+            var upperCube = new THREE.Mesh (upperGeometry, upperMaterial);
+            upperCube.position.y = 150;
+            upperCube.position.z = -500;
+            scene.add(upperCube);
+            
+            
+            //Left frame
+            var leftFrameGeometry = new THREE.CubeGeometry(10,300,100);
+            var leftFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor2.jpg'), side: THREE.DoubleSide});
+            var leftFrameCube = new THREE.Mesh(leftFrameGeometry, leftFrameMaterial);
+            leftFrameCube.position.x = -200;
+            leftFrameCube.position.z = -500;
+            scene.add(leftFrameCube);
+            
+            //Right frame
+            var rightFrameGeometry = new THREE.CubeGeometry(10,300,100);
+            var rightFrameMaterial = new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('img/floor2.jpg'), side: THREE.DoubleSide});
+            var rightFrameCube = new THREE.Mesh(rightFrameGeometry, rightFrameMaterial);
+            rightFrameCube.position.x =200;
+            rightFrameCube.position.z = -500;
+            scene.add(rightFrameCube);
+            
+        //room
+            //right wall
+            var rightWallGeometry = new THREE.CubeGeometry(10,600,1000);
+            var wallMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/wall2.png'), side:THREE.DoubleSide});
+            var ceilingMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/wall.png'), side:THREE.DoubleSide});
+            var floorMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('img/floor2.jpg'), side:THREE.DoubleSide});
+            var rightWallCube = new THREE.Mesh(rightWallGeometry, wallMaterial);
+            rightWallCube.position.x =500;
+            rightWallCube.position.z = -200;
+            scene.add(rightWallCube);
+            
+            //leftWall
+            var leftWallGeometry = new THREE.CubeGeometry(10,600,1000);
+            var leftWallCube = new THREE.Mesh(leftWallGeometry, wallMaterial);
+            leftWallCube.position.x =-500;
+            leftWallCube.position.z = -200;
+            scene.add(leftWallCube);
+            
+            
+            //floor
+            var ceilingGeometry = new THREE.CubeGeometry(1000,10,1000);
+            var ceilingCube = new THREE.Mesh(ceilingGeometry, floorMaterial);
+            ceilingCube.position.x = 0;
+            ceilingCube.position.y = -300;
+            ceilingCube.position.z = -200;
+            scene.add(ceilingCube);
+            
+            //ceiling
+            var floorGeometry = new THREE.CubeGeometry(1000,10,1000);
+            var floorCube = new THREE.Mesh(floorGeometry, ceilingMaterial);
+            floorCube.position.x = 0;
+            floorCube.position.y = 300;
+            floorCube.position.z = -200;
+            scene.add(floorCube);
+            
+            //backwall
+            var backWallGeometry = new THREE.CubeGeometry(1000,600,10);
+            var backWallCube = new THREE.Mesh(backWallGeometry, wallMaterial);
+            backWallCube.position.x = 0;
+            backWallCube.position.z = -700;
+            scene.add(backWallCube);
+            
+            //front
+            var backWallGeometry = new THREE.CubeGeometry(1000,600,10);
+            var backWallCube = new THREE.Mesh(backWallGeometry, wallMaterial);
+            backWallCube.position.x = 0;
+            backWallCube.position.z = 300;
+            scene.add(backWallCube);
+        
+        //models
+            //plant
+            var loader = new THREE.GLTFLoader();
+            loader.load( 'obj/indoor_plant/scene.gltf', function ( gltf ) {
+                scene.add( gltf.scene );
+                gltf.scene.scale.set(30, 30, 30);
+                gltf.scene.position.set(300, -250, -200);
+            } );
+            
+            //bench
+            var loader = new THREE.GLTFLoader();
+            loader.load( 'obj/leather_couch_black/scene.gltf', function ( gltf ) {
+                scene.add( gltf.scene );
+                gltf.scene.scale.set(50, 50, 50);
+                gltf.scene.position.set(-20, -100, 120 );
+                gltf.scene.rotation.y = THREE.Math.degToRad(180)
+                gltf.scene.traverse((o) => {
+                  if (o.isMesh) o.material.normalScale.y *= -1;
+                });
+            } );
+            
+        //light
+            
+            var spotLight = new THREE.SpotLight( 0xf0e0bc );
+            spotLight.position.set( 0, -50, -50 );
+
+            spotLight.decay = 1.2;
+            spotLight.angle = 4;
+            spotLight.intensity = 1.5;
+            spotLight.distance = 300;
+
+            spotLight.castShadow = true;
+            spotLight.shadow.mapSize.width = 1024;
+            spotLight.shadow.mapSize.height = 1024;
+            spotLight.shadow.camera.near = 500;
+            spotLight.shadow.camera.far = 500;
+            spotLight.shadow.camera.fov = 30;
+            scene.add( spotLight );
+            
+            
+            var spotLight2 = new THREE.SpotLight( 0xf0e0bc );
+            spotLight.position.set( 300, 100, 300 );
+
+            spotLight2.decay = 1.2;
+            spotLight2.angle = 4;
+            spotLight2.intensity = 2;
+            spotLight2.distance = 600;
+
+            spotLight2.castShadow = true;
+            spotLight2.shadow.mapSize.width = 1024;
+            spotLight2.shadow.mapSize.height = 1024;
+            spotLight2.shadow.camera.near = 500;
+            spotLight2.shadow.camera.far = 500;
+            spotLight2.shadow.camera.fov = 30;
+            scene.add( spotLight2 );
+            
+            
+            var ambientLight = new THREE.AmbientLight( 0xFFFFFF,0.99);
+            scene.add(ambientLight);
+            
+            
+            //game logic
+            var update = function(){
+//                cone.rotation.x += 0.01;
+//                cone.rotation.y += 0.005;
+//                cone.rotation.z += 0.005;
+            };
+            
+            // draw scene
+            var render = function(){
+                renderer.render( scene, camera);
+                renderer.gammaOutput = true;
+                renderer.gammaFactor = 2.2;
+            };
+            
+            // run game loop (update, render, repeat)
+            var GameLoop = function(){
+                requestAnimationFrame(GameLoop);
+                
+                update();
+                render();
+                
+            };
+            
+            GameLoop(); 
+        </script>
+    </body>
+</html>
